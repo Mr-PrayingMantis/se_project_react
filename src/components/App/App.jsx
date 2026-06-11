@@ -1,12 +1,17 @@
 import './App.css'
 import Header from '../Header/Header';
+import Main from '../Main/Main'
+import Footer from '../Footer/Footer'
 function App() {
-  return 
+  return (
   <div className="page">
     <div className="page__content">
       <Header />
+      <Main />
+      <Footer />
     </div>
-  </div>;
+  </div>
+  );
 }
-
+//<Footer />
 export default App
