@@ -8,11 +8,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  visibility: hidden;
+}
+
+.modal__open {
+  visibility: visible;
 }
 
 .modal__title {
   margin: 0;
-
   font-family: Cabinet Grotesk;
   font-weight: 700;
   font-style: Bold;
