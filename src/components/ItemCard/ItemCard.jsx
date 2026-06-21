@@ -1,9 +1,11 @@
+import "./ItemCard.css";
+
 function ItemCard(props) {
   return (
-    <div>
-      <h2>{item.name}</h2>
-      <img src={item.link} alt={item.name} />
-    </div>
+    <li className="card">
+      <h2 className="card__name">{props.item.name}</h2>
+      <img className="card__image" src={props.item.link} alt={props.item.name} />
+    </li>
   );
 }
 
