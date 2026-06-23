@@ -17,13 +17,14 @@ function Main({ weatherData, handleCardClick }) {
             return item.weather === weatherData.type;
           })*/
           .map((item) => {
-            return 
-            <ItemCard 
-              key={item._id} 
-              item={item} 
-              onCardClick={handleCardClick} 
-            />;
-          })}
+          return (
+            <ItemCard
+              key={item._id}
+              item={item}
+              onCardClick={handleCardClick}
+            />
+          );
+        })}
         </ul>
       </section>
     </main>
