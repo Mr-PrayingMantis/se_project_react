@@ -24,4 +24,24 @@
 
 .header__username{
     margin: 0;
+    font-family: Cabinet Grotesk;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    top: 8px;
+    left: 1151px;
+    opacity: 1;
+}
+
+.header__add-clothes-button{
+    font-family: Cabinet Grotesk;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    border: none;
+    background-color: transparent;
 }
