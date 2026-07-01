@@ -64,6 +64,13 @@
 
 .modal__label {
   padding: 6px 0;
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+
 }
 
 .modal__input {
