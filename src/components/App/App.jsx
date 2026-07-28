@@ -8,7 +8,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, apiKey } from "../../utils/constants";
-import CurrentTempertureUnitContext from "../../contexts/currentTempertureUnitContext";
+import currentTemperatureUnitContext from "../../contexts/currentTemperatureUnitContext";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -18,13 +18,13 @@ function App() {
   });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
-  const [currentTempertureUnit, setcurrentTempertureUnit] = useState("F");
+  const [currentTemperatureUnit, setcurrentTemperatureUnit] = useState("F");
 
   const handleToggleSwitchChange = () => {
-    if (currentTempertureUnit === "F") {
-      setcurrentTempertureUnit("C");
+    if (currentTemperatureUnit === "F") {
+      setcurrentTemperatureUnit("C");
     } else {
-      setcurrentTempertureUnit("F");
+      setcurrentTemperatureUnit("F");
     }
   };
 
@@ -66,8 +66,8 @@ function App() {
   }, []);
 
   return (
-    <CurrentTempertureUnitContext.Provider
-      value={{ currentTempertureUnit, handleToggleSwitchChange }}
+    <currentTemperatureUnitContext.Provider
+      value={{ currentTemperatureUnit, handleToggleSwitchChange }}
     >
       <div className="page">
         <div className="page__content">
@@ -151,7 +151,7 @@ function App() {
           handleCloseModal={closeModal}
         />
       </div>
-    </CurrentTempertureUnitContext.Provider>
+    </currentTemperatureUnitContext.Provider>
   );
 }
 export default App;
