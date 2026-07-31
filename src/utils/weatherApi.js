@@ -17,8 +17,14 @@ const filterWeatherData = (data) => {
     C: Math.round(((data.main.temp - 32) * 5) / 9),
   };
   result.type = getWeatherType(result.temp.F);
+  result.isDay = isDay(data.sys, Date.now());
+  result.condition = data.weather[0].main.toLowerCase();
   return result;
 };
+
+const isDay = ({ sunrise, sunset}, now) => {
+  return sunrise * 1000 < now && now < sunset * 1000;
+}
 
 const getWeatherType = (temperature) => {
   if (temperature >= 86) {
@@ -31,11 +37,3 @@ const getWeatherType = (temperature) => {
 };
 
 export { getWeather, filterWeatherData };
-
-/* result.isDay = isDay(data.sys, Data.now());
-  result.condition = data.weather[0].main.toLowerCase();
-  
-const isDay = ({ sunrise, sunset}, now) => {
-  return sunrise * 1000 < now && now < sunset * 1000;
-}
-  */
