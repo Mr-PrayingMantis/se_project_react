@@ -35,8 +35,14 @@ function App() {
     setSelectedCard(card);
   };
 
-  const onAddItem = (data) => {
-    console.log("data");
+  const onAddItem = (imputValues) => {
+    const newCardData = {
+      name: imputValues.name,
+      link: imputValues.link,
+      weather: imputValues.weather,
+    };
+    setClothingItems([...clothingItems, newCardData]);
+    closeModal();
   };
 
   const handleAddClick = () => {
