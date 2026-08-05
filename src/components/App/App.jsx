@@ -10,6 +10,8 @@ import { coordinates, apiKey } from "../../utils/constants";
 import currentTemperatureUnitContext from "../../contexts/currentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { defaultClothingItems } from "../../utils/constants";
+import { Routes, Route } from "react-router-dom";
+import Profile from "../Profile/Profile";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -35,11 +37,11 @@ function App() {
     setSelectedCard(card);
   };
 
-  const onAddItem = (imputValues) => {
+  const onAddItem = (inputValues) => {
     const newCardData = {
-      name: imputValues.name,
-      link: imputValues.link,
-      weather: imputValues.weather,
+      name: inputValues.name,
+      image: inputValues.image,
+      weather: inputValues.weather,
     };
     setClothingItems([...clothingItems, newCardData]);
     closeModal();
@@ -84,28 +86,35 @@ function App() {
       <div className="page">
         <div className="page__content">
           <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-          <Main
-            weatherData={weatherData}
-            handleCardClick={handleCardClick}
-            clothingItems={clothingItems}
-          />
+
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Main
+                  weatherData={weatherData}
+                  handleCardClick={handleCardClick}
+                  clothingItems={clothingItems}
+                />
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <Profile
+                  handleCardClick={handleCardClick}
+                  clothingItems={clothingItems}
+                />
+              }
+            />
+          </Routes>
           <Footer />
         </div>
-        {/*<ModalWithForm
-        title="New garment"
-          buttonText="Add garment"
-          activeModal={activeModal}
-          handleCloseModal={closeModal}
-          isOpen={activeModal === "add-garment"}
-          form
-          name="add-garment"
-          >
-        </ModalWithForm>*/}
         <AddItemModal
           activeModal={activeModal}
           handleCloseModal={closeModal}
           isOpen={activeModal === "add-garment"}
-          onSubmit={onAddItem}
+          onAddItem={onAddItem}
         />
         <ItemModal
           activeModal={activeModal}

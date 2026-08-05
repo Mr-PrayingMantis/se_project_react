@@ -10,19 +10,15 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
       weather: "",
     };
   const {values, handleChange} = useForm(defaultValues);
-  function handleSubmit() {
-    
-    const handleSubmit = (evt) => {
-      evt.preventDefault();
-      onAddItem(values);
-    }
-  }
+  const handleSubmit = (evt) => {
+  evt.preventDefault();
+  onAddItem(values);
+};
   return (
     <ModalWithForm
       title="New garment"
       buttonText="Add garment"
       handleCloseModal={handleCloseModal}
-      onSubmit={onAddItem}
       isOpen={isOpen}
       onSubmit={handleSubmit}
     >
