@@ -9,7 +9,6 @@ import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, apiKey } from "../../utils/constants";
 import currentTemperatureUnitContext from "../../contexts/currentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import { defaultClothingItems } from "../../utils/constants";
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
 
@@ -22,7 +21,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setcurrentTemperatureUnit] = useState("F");
-  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState();
 
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "F") {
