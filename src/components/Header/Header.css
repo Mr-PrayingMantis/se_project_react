@@ -66,3 +66,8 @@
     background-color: transparent;
     cursor: pointer;
 }
+
+.header__nav-link {
+    color: black;
+    text-decoration: none;
+}

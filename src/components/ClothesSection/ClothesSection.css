@@ -7,11 +7,10 @@
 }
 
 .clothes-section__list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 283px);
-    grid-template-rows: repeat(auto-fit, 283px);
-    justify-content: center;
-    grid-template-columns: repeat(auto-fill, minmax(283px, 1fr));
-    justify-items: center;
-    width: 100%;
+     display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    gap: 21px;    
 }
