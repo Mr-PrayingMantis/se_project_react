@@ -101,6 +101,33 @@
       "name": "T-Shirt",
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
+    },
+    {
+      "name": "Ace Spades",
+      "weather": "hot",
+      "_id": 17
+    },
+    {
+      "name": "Sinful Shell",
+      "weather": "hot",
+      "_id": 18
+    },
+    {
+      "name": "Sinful Shell",
+      "weather": "hot",
+      "_id": 19
+    },
+    {
+      "name": "aaaaaaa",
+      "imageUrl": "https://aaa.png",
+      "weather": "hot",
+      "_id": 20
+    },
+    {
+      "name": "3rd years graduation",
+      "imageUrl": "https://aaa.png",
+      "weather": "hot",
+      "_id": 21
     }
   ]
 }

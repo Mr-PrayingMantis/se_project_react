@@ -6,7 +6,7 @@ import currentTemperatureUnitContext from "../../contexts/currentTemperatureUnit
 const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
   const defaultValues = {
       name: "",
-      image: "",
+      imageUrl: "",
       weather: "",
     };
   const {values, handleChange} = useForm(defaultValues);
@@ -44,9 +44,9 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
           className="modal__input"
           id="imageUrl"
           placeholder="Image Url"
-          name="image"
+          name="imageUrl"
           required
-          value={values.image}
+          value={values.imageUrl}
           onChange={handleChange}
         />
       </label>

@@ -11,7 +11,7 @@ import currentTemperatureUnitContext from "../../contexts/currentTemperatureUnit
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
-import { getitem, getItems, getitems } from "../../utils/api";
+import { getItems, addItem  } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -40,11 +40,16 @@ function App() {
   const onAddItem = (inputValues) => {
     const newCardData = {
       name: inputValues.name,
-      image: inputValues.image,
+      imageUrl: inputValues.imageUrl,
       weather: inputValues.weather,
     };
-    setClothingItems([...clothingItems, newCardData]);
-    closeModal();
+
+    addItem(newCardData)
+      .then((data) => {
+        setClothingItems([ data, ...clothingItems ]);
+        closeModal();
+      })
+      .catch(console.error);
   };
 
   const handleAddClick = () => {
@@ -54,10 +59,9 @@ function App() {
     setActiveModal("");
   };
   useEffect(() => {
-    if (!activeModal) return; // stop the effect not to add the listener if there is no active modal
+    if (!activeModal) return;
 
     const handleEscClose = (e) => {
-      // define the function inside useEffect not to lose the reference on rerendering
       if (e.key === "Escape") {
         closeModal();
       }
@@ -66,10 +70,9 @@ function App() {
     document.addEventListener("keydown", handleEscClose);
 
     return () => {
-      // don't forget to add a clean up function for removing the listener
       document.removeEventListener("keydown", handleEscClose);
     };
-  }, [activeModal]); // watch activeModal here
+  }, [activeModal]);
   useEffect(() => {
     getWeather(coordinates, apiKey)
       .then((data) => {
@@ -77,10 +80,13 @@ function App() {
         setWeatherData(filterData);
       })
       .catch(console.error);
-    
-    getItems().then((data) =>{
-      console.log(data);
-    }).catch(console.error)
+
+    getItems()
+      .then((data) => {
+        reversed()
+        setClothingItems(data);
+      })
+      .catch(console.error);
   }, []);
 
   return (
