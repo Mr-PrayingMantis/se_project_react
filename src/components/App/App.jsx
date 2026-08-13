@@ -12,7 +12,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import { getItems, addItem  } from "../../utils/api";
-
+//json-server --watch db.json --id _id --port 3001
 function App() {
   const [weatherData, setWeatherData] = useState({
     type: "",
@@ -83,7 +83,8 @@ function App() {
 
     getItems()
       .then((data) => {
-        reversed()
+        const array = ["Beanie", "Boot", "Cap", "Coat", "Dress", "Hoodie", "Jacket", "Jeans", "Loafers", "Sandals", "Scarf", "Shorts", "Skirt", "Sneakers", "Sunglasses", "Sweatshirt", "T-Shirt", "Ace Spades", "Sinful Shell",];
+        const reversed = array.reverse();
         setClothingItems(data);
       })
       .catch(console.error);
