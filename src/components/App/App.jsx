@@ -11,8 +11,8 @@ import currentTemperatureUnitContext from "../../contexts/currentTemperatureUnit
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
-import { getItems, addItem  } from "../../utils/api";
-//json-server --watch db.json --id _id --port 3001
+import { getItems, addItem } from "../../utils/api";
+
 function App() {
   const [weatherData, setWeatherData] = useState({
     type: "",
@@ -46,12 +46,15 @@ function App() {
 
     addItem(newCardData)
       .then((data) => {
-        setClothingItems([ data, ...clothingItems ]);
+        const reversed = [...data].reverse();
+        setClothingItems(reversed);
         closeModal();
       })
       .catch(console.error);
   };
-
+  //json-server --watch db.json --id _id --port 3001
+  /*const reversed = [...data].reverse();
+        setClothingItems(reversed); */
   const handleAddClick = () => {
     setActiveModal("add-garment");
   };
@@ -83,7 +86,27 @@ function App() {
 
     getItems()
       .then((data) => {
-        const array = ["Beanie", "Boot", "Cap", "Coat", "Dress", "Hoodie", "Jacket", "Jeans", "Loafers", "Sandals", "Scarf", "Shorts", "Skirt", "Sneakers", "Sunglasses", "Sweatshirt", "T-Shirt", "Ace Spades", "Sinful Shell",];
+        const array = [
+          "Beanie",
+          "Boot",
+          "Cap",
+          "Coat",
+          "Dress",
+          "Hoodie",
+          "Jacket",
+          "Jeans",
+          "Loafers",
+          "Sandals",
+          "Scarf",
+          "Shorts",
+          "Skirt",
+          "Sneakers",
+          "Sunglasses",
+          "Sweatshirt",
+          "T-Shirt",
+          "Ace Spades",
+          "Sinful Shell",
+        ];
         const reversed = array.reverse();
         setClothingItems(data);
       })
