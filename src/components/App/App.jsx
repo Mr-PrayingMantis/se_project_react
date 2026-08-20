@@ -52,9 +52,33 @@ function App() {
       })
       .catch(console.error);
   };
+
+  onRemoveItem() = (itemID) => {
+    selectedCard.remove();
+  closeModal(deleteModal);
+  };
+
   //json-server --watch db.json --id _id --port 3001
-  /*const reversed = [...data].reverse();
-        setClothingItems(reversed); */
+  /*
+  function handleDeleteSubmit(evt) {
+  evt.preventDefault();
+
+  const submitBtn = evt.submitter;
+  setButtonText(submitBtn, true, "Deleting...", "Delete");
+
+  api
+    .deleteCard({ id: selectedCardid })
+    .then(() => {
+  selectedCard.remove();
+  closeModal(deleteModal);
+})
+    .catch(console.error)
+
+    .finally(() => {
+      setButtonText(submitBtn, false, "Deleting...", "Delete" )
+    });
+};
+  */
   const handleAddClick = () => {
     setActiveModal("add-garment");
   };
@@ -86,29 +110,8 @@ function App() {
 
     getItems()
       .then((data) => {
-        const array = [
-          "Beanie",
-          "Boot",
-          "Cap",
-          "Coat",
-          "Dress",
-          "Hoodie",
-          "Jacket",
-          "Jeans",
-          "Loafers",
-          "Sandals",
-          "Scarf",
-          "Shorts",
-          "Skirt",
-          "Sneakers",
-          "Sunglasses",
-          "Sweatshirt",
-          "T-Shirt",
-          "Ace Spades",
-          "Sinful Shell",
-        ];
-        const reversed = array.reverse();
-        setClothingItems(data);
+      
+        setClothingItems(data.reverse());
       })
       .catch(console.error);
   }, []);
@@ -154,6 +157,7 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           handleCloseModal={closeModal}
+          onRemoveItem={onRemoveItem} 
         />
       </div>
     </currentTemperatureUnitContext.Provider>
