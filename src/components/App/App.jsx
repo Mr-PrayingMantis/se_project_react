@@ -11,7 +11,7 @@ import currentTemperatureUnitContext from "../../contexts/currentTemperatureUnit
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
-import { getItems, addItem } from "../../utils/api";
+import { getItems, addItem, deleteItem } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -53,9 +53,14 @@ function App() {
       .catch(console.error);
   };
 
-  onRemoveItem() = (itemID) => {
-    selectedCard.remove();
-  closeModal(deleteModal);
+  const onRemoveItem = (itemID) => {
+    setClothingItems((prevItems) =>
+    prevItems.filter((item) => item._id !== itemID)
+  );
+
+  deleteItem(itemID)
+    .then((itemID) => {deleteItem(itemID)})
+  closeModal();
   };
 
   //json-server --watch db.json --id _id --port 3001
